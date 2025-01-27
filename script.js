@@ -70,8 +70,16 @@ const playRound = (computer, user) => {
     console.log(`Computer Score: ${computerScore} User Score: ${humanScore}`);
 }
 
-playRound(getComputerChoice(), getHumanChoice());
-
+// Create a function playGame that allows the user to play 5 rounds. 
+const playGame = () => {
+    //Call the playRound function 5 times
+    for(let i = 0; i < 5; i++){
+        const computerChose = getComputerChoice();
+        const humanChose = getHumanChoice();
+        playRound(computerChose, humanChose);
+        console.log(`Round: ${i + 1}`);
+    }
+}
     
 
     
