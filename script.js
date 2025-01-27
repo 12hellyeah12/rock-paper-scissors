@@ -93,6 +93,10 @@ const playGame = () => {
         // Then Human wins
         console.log(`You win ${humanScore} to ${computerScore}`);
     }
+
+    //Reset Scores after Game
+    computerScore = 0;
+    humanScore = 0;
 }
     
 
