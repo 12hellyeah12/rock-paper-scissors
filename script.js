@@ -22,3 +22,8 @@ const getComputerChoice = () => {
     // Return "computerChoice"
     console.log(computerChoice);
 }
+
+// Create a function called getHumanChoice
+// Prompt the user for input and assign it to userChoice
+// Return userChoice
+const getHumanChoice = () => userChoice = window.prompt("Rock, Paper or Scissor?", "e.g. Rock, Paper or Scissor");
