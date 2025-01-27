@@ -79,6 +79,20 @@ const playGame = () => {
         playRound(computerChose, humanChose);
         console.log(`Round: ${i + 1}`);
     }
+    //Declare the winner
+    //When Computer Score is greater than Human Score 
+    if(computerScore > humanScore){
+        //Computer wins
+        console.log(`You loose! Computer wins ${computerScore} to ${humanScore}`);
+    //When Computer Score and Human Score are equal
+    } else if(computerScore === humanScore){
+        //Then there is no winner
+        console.log(`It's a tie! Both have ${computerScore} points.`);
+    //When Computer does not win and there is no tie
+    } else {
+        // Then Human wins
+        console.log(`You win ${humanScore} to ${computerScore}`);
+    }
 }
     
 
