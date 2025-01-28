@@ -1,5 +1,11 @@
 let humanScore = 0;
 let computerScore = 0;
+const buttons = document.querySelectorAll("button");
+const scores = document.querySelectorAll(".score");
+const roundResults = document.querySelector(".round-results");
+
+scores[0].textContent = `Computer Score: ${computerScore}`;
+scores[1].textContent = `Your Score: ${humanScore}`;
 
 const getComputerChoice = () => {
     
@@ -17,7 +23,7 @@ const getComputerChoice = () => {
     return computerChoice;
 }
 
-const getHumanChoice = () => userChoice = window.prompt("Rock, Paper or Scissor?", "e.g. Rock, Paper or Scissor");
+//const getHumanChoice = () => userChoice = window.prompt("Rock, Paper or Scissor?", "e.g. Rock, Paper or Scissor");
 
 const playRound = (computer, user) => {
     // Make arguments case insensitive
@@ -53,12 +59,21 @@ const playRound = (computer, user) => {
 
 const playGame = () => {
     
-    for(let i = 0; i < 5; i++){
+    /*for(let i = 0; i < 5; i++){
         const computerChose = getComputerChoice();
         const humanChose = getHumanChoice();
         playRound(computerChose, humanChose);
         console.log(`Round: ${i + 1}`);
-    }
+    }*/
+
+    //Aim is to play until 5 points are obtained
+    //Every round´s result will be seen in roundResults
+    //The scores are updated each round
+    //After the game a message is printed which announces if you win or loose
+    //The scores, rounds and textContents are reseted to their initial values.
+    
+    
+    
    
     if(computerScore > humanScore){
         console.log(`You loose! Computer wins ${computerScore} to ${humanScore}`);
@@ -72,7 +87,18 @@ const playGame = () => {
     computerScore = 0;
     humanScore = 0;
 }
-    
+
+//Each of the three buttons in the NodeList button is assigned a event listener
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const userChoice = button.value;
+        const computerChoice = getComputerChoice();
+
+        while(computerScore < 5 || humanScore < 5){
+            playRound(computerChoice, userChoice);
+        }
+    });
+});
 
     
     
