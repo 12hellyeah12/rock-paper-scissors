@@ -61,19 +61,17 @@ const playRound = (computer, user) => {
     scores[1].textContent = `Your Score: ${humanScore}`;
 }
 
-const playGame = () => {
+const displayWinner = () => {
     
-    if(computerScore > humanScore){
-        console.log(`You loose! Computer wins ${computerScore} to ${humanScore}`);
-    } else if(computerScore === humanScore){
-        console.log(`It's a tie! Both have ${computerScore} points.`);
-    } else {
-        console.log(`You win ${humanScore} to ${computerScore}`);
+    if(computerScore === 5){
+        roundResults.innerHTML = 
+        `<div>You loose!</div>`;
+        roundResults.style.color ="red";
+    } else if(humanScore === 5){
+        roundResults.innerHTML = 
+        `<div>You win!</div>`;
+        roundResults.style.color ="green";
     }
-
-    //Reset Scores after Game
-    computerScore = 0;
-    humanScore = 0;
 }
 
 //Each of the three buttons in the NodeList button is assigned a event listener
@@ -83,6 +81,7 @@ buttons.forEach(button => {
         const computerChoice = getComputerChoice();
 
         playRound(computerChoice, userChoice);
+        displayWinner();
         
     });
 });
