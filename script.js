@@ -46,15 +46,21 @@ const playRound = (computer, user) => {
     }
 
     if(computerWins){
-        console.log(`You loose! ${computerChoice} beats ${userChoice}`);
+        roundResults.innerHTML += 
+        `<div>You loose! ${computerChoice} beats ${userChoice}</div>`;
         computerScore += 1;
     } else if(isTie){
-        console.log(`It is a ${computerChoice}-tie!`)
+        roundResults.innerHTML += 
+        `<div>It is a ${computerChoice}-tie!</div>`;
+        console.log(``)
     } else {
-        console.log(`You win! ${userChoice} beats ${computerChoice}`);
+        roundResults.innerHTML += 
+        `<div>You win! ${userChoice} beats ${computerChoice}</div>`;
         humanScore += 1;
-    } 
-    console.log(`Computer Score: ${computerScore} User Score: ${humanScore}`);
+    }
+
+    scores[0].textContent = `Computer Score: ${computerScore}`;
+    scores[1].textContent = `Your Score: ${humanScore}`;
 }
 
 const playGame = () => {
@@ -94,9 +100,8 @@ buttons.forEach(button => {
         const userChoice = button.value;
         const computerChoice = getComputerChoice();
 
-        while(computerScore < 5 || humanScore < 5){
-            playRound(computerChoice, userChoice);
-        }
+        playRound(computerChoice, userChoice);
+        
     });
 });
 
