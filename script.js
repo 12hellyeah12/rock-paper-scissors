@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let foundWinner = false;
 const buttons = document.querySelectorAll("button");
 const scores = document.querySelectorAll(".score");
 const roundResults = document.querySelector(".round-results");
@@ -64,14 +65,25 @@ const playRound = (computer, user) => {
 const displayWinner = () => {
     
     if(computerScore === 5){
-        roundResults.innerHTML = 
-        `<div>You loose!</div>`;
+        roundResults.innerHTML = `<div>You loose!</div>`;
         roundResults.style.color ="red";
+        foundWinner = true;
     } else if(humanScore === 5){
-        roundResults.innerHTML = 
-        `<div>You win!</div>`;
+        roundResults.innerHTML = `<div>You win!</div>`;
         roundResults.style.color ="green";
+        foundWinner = true;
     }
+}
+
+const resetGame = () => {
+    humanScore = 0;
+    computerScore = 0;
+    foundWinner = false;
+
+    roundResults.innerHTML = "";
+    roundResults.style.color ="black";
+    scores[0].textContent = `Computer Score: ${computerScore}`;
+    scores[1].textContent = `Your Score: ${humanScore}`;
 }
 
 //Each of the three buttons in the NodeList button is assigned a event listener
@@ -82,7 +94,10 @@ buttons.forEach(button => {
 
         playRound(computerChoice, userChoice);
         displayWinner();
-        
+
+            if(foundWinner){
+                setTimeout(resetGame, 1000);
+            }
     });
 });
 
