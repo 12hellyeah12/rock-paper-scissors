@@ -23,8 +23,6 @@ const getComputerChoice = () => {
     return computerChoice;
 }
 
-//const getHumanChoice = () => userChoice = window.prompt("Rock, Paper or Scissor?", "e.g. Rock, Paper or Scissor");
-
 const playRound = (computer, user) => {
     // Make arguments case insensitive
     const computerChoice = computer.toLowerCase();
@@ -65,22 +63,6 @@ const playRound = (computer, user) => {
 
 const playGame = () => {
     
-    /*for(let i = 0; i < 5; i++){
-        const computerChose = getComputerChoice();
-        const humanChose = getHumanChoice();
-        playRound(computerChose, humanChose);
-        console.log(`Round: ${i + 1}`);
-    }*/
-
-    //Aim is to play until 5 points are obtained
-    //Every round´s result will be seen in roundResults
-    //The scores are updated each round
-    //After the game a message is printed which announces if you win or loose
-    //The scores, rounds and textContents are reseted to their initial values.
-    
-    
-    
-   
     if(computerScore > humanScore){
         console.log(`You loose! Computer wins ${computerScore} to ${humanScore}`);
     } else if(computerScore === humanScore){
